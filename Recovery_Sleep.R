@@ -201,7 +201,7 @@ dev.off()
 
 ###Supplementary Table 2
 ########################################################################################################################
-RUV.test.sig <- lapply(tests, toptable, f = f2, p = 0.01)
+RUV.test.sig <- lapply(tests, toptable, f = f2, p = 0.1)
 addcolumn <- function(dat) { cbind(dat, "MGI Symbol" = map_symbol[match(rownames(dat), map_symbol[,1]),2], 
                                    "Ensembl ID" = map_ensembl[match(rownames(dat), map_ensembl[,1]),2])[,c(8,7,1:6)]}
 RUV.test.sig.anno <- lapply(RUV.test.sig, addcolumn)
@@ -437,10 +437,10 @@ f3 <- eBayes(f3)
 
 toptable <- function(x, f, p) { topTable(f, coef = x, adjust.method = "fdr", p.value = p, number = Inf, confint = F) }
 tests <- c("CC6v0" = 1, "CC11v0" = 2, "CC11v6" = 3)
-tests <- lapply(tests, toptable, f = f3, p = 1)
+tests <- lapply(tests, toptable, f = f3, p = 0.1)
 tests <- lapply(tests, addcolumn)
 list2env(tests, .GlobalEnv)
 
-write.xlsx(CC6v0, file = "Tables/Additional File 5 full.xlsx", sheetName = "CC6vCC0", row.names = F)
-write.xlsx(CC11v0, file = "Tables/Additional File 5 full2.xlsx", sheetName = "CC11vCC0", row.names = F)#, append = TRUE)
-write.xlsx(CC11v6, file = "Tables/Additional File 5 full3.xlsx", sheetName = "CC11vCC6", row.names = F)#, append = TRUE)
+write.xlsx(CC6v0, file = "Tables/Additional File 5.xlsx", sheetName = "CC6vCC0", row.names = F)
+write.xlsx(CC11v0, file = "Tables/Additional File 5.xlsx", sheetName = "CC11vCC0", row.names = F)#, append = TRUE)
+write.xlsx(CC11v6, file = "Tables/Additional File 5.xlsx", sheetName = "CC11vCC6", row.names = F)#, append = TRUE)
