@@ -194,4 +194,3 @@ tab$mo430_id <- mapping_mo430$affy_mouse430_2[match(tab$Row.names, mapping_mo430
 tab <- tab[, c(1, 9, 10, 8, 2:7)]
 colnames(tab)[1:4] <- c("Ensembl ID", "Mouse Gene 2.1 ST probeset ID", "Mouse Genome 430 2.0 probeset ID", "MGI Symbol")
 write.xlsx(tab, file = "Tables/Additional File 2.xlsx", sheetName = "Maret_Mackiewicz_Gerstner_Peixoto", row.names = F)
-
